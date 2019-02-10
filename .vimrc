@@ -19,10 +19,15 @@
     Plugin 'vim-airline/vim-airline'
     Plugin 'ntpeters/vim-better-whitespace'
     Plugin 'scrooloose/nerdcommenter'
+    Plugin 'godlygeek/tabular'
+    Plugin 'tpope/vim-surround'
+
+    " File-Type Specific Plugins
+    Plugin 'bazelbuild/vim-ft-bzl'
+    Plugin 'JamshedVesuna/vim-markdown-preview'
 
     " Language Specific Plugins
     Plugin 'wlangstroth/vim-racket'
-    Plugin 'tpope/vim-surround'
     Plugin 'zzeroo/vim-vala'
     Plugin 'rgrinberg/vim-ocaml'
 
@@ -100,12 +105,21 @@
     " set foldlevel=0
     " set foldmethod=indent
 
-" text files ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" Markdown Files ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    " grip must be installed for the next line. (https://github.com/joeyespo/grip)
+    let vim_markdown_preview_github=1
+    let vim_markdown_preview_browser='Google Chrome'
+
+    " turn on spell checking for .md files
+    autocmd BufRead,BufNewFile   *.md setlocal spell spelllang=en_us
+
+" Text Files ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     autocmd BufRead,BufNewFile   *.txt setlocal spell spelllang=en_us
     autocmd BufRead,BufNewFile   *.txt setlocal nofoldenable
     autocmd BufRead,BufNewFile   *.txt setlocal noexpandtab
-    autocmd FileType help setlocal nospell
 
+" General Spelling ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    autocmd FileType help setlocal nospell
     hi clear SpellLocal
     hi clear SpellRare
     hi clear SpellCap
@@ -113,6 +127,6 @@
     hi SpellCap ctermfg=blue cterm=bold,underline
     hi SpellBad ctermfg=red cterm=bold,underline
 
-" Read for More Ideas
+" Read for More Configuration Ideas
 " https://github.com/aaronbieber/dotvim/blob/master/config/00_settings.vim
 " http://forum.ubuntu.org.cn/viewtopic.php?f=86&t=309772
